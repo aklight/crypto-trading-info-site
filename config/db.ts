@@ -1,17 +1,17 @@
-import mongoose from 'mongoose';
-import config from 'config';
+import * as mongoose from 'mongoose';
+import * as config from 'config';
 
-const db = config.get('mongoURI');
+const db: string = config.get('mongoURI');
 
 const connectDB = async () => {
   try {
     await mongoose.connect(db, {
       useNewUrlParser: true,
       useCreateIndex: true,
-      useFindAndModify: false,
+      useFindAndModify: false
     });
     console.log('Mongo DB Connected...');
-  } catch(err) {
+  } catch (err) {
     console.log(err.message);
     process.exit(1);
   }

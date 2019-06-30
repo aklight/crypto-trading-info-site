@@ -1,11 +1,12 @@
-import * as express from "express";
-import * as path from "path";
+import * as express from 'express';
+import * as path from 'path';
+import * as bodyParser from 'body-parser';
 
 class App {
   public app: express.Application;
   public port: number;
 
-  constructor(controllers, port) {
+  constructor(controllers: any, port: number) {
     this.app = express();
     this.port = port;
 
@@ -14,13 +15,14 @@ class App {
   }
 
   private initializeMiddlwares() {
-    this.app.use(express.json({ extended: false }));
-    this.app.use("/", express.static(path.resolve("./src/server/public")));
-    this.app.use("/static", express.static(path.resolve("./dist/client")));
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json());
+    this.app.use('/', express.static(path.resolve('./src/server/public')));
+    this.app.use('/static', express.static(path.resolve('./dist/client')));
   }
 
-  private initializeControllers(controllers) {
-    controllers.forEach(controller => {
+  private initializeControllers(controllers: any) {
+    controllers.forEach((controller: any) => {
       this.app.use('/', controller.router);
     });
   }
