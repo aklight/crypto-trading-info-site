@@ -16,16 +16,16 @@ fuse
   // launch and restart express
   .completed((proc) => proc.start());
 
-const testWatch = TypeChecker({
+const Watch = TypeChecker({
   tsConfig: './src/tsconfig.json',
   basePath: './',
   name: 'Watch Async'
 });
 
-testWatch
-  .runPromise('./src')
+Watch.runPromise('./src')
   .then((res) => {
     if (res) {
+      // if therea are errors then exit
       process.exit(1);
     }
   })
