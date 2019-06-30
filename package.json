@@ -6,12 +6,25 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@types/jest": "^24.0.15",
     "@types/node": "^12.0.10",
+    "@types/react": "^16.8.22",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-redux": "^7.1.1",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/semantic-ui": "^2.2.7",
     "express": "^4.17.1",
     "fuse-box": "^3.7.1",
     "husky": "^2.4.1",
+    "jest": "^24.8.0",
     "lint-staged": "^8.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "^5.0.1",
+    "semantic-ui-react": "^0.87.2",
     "terser": "^4.0.0",
+    "tslint": "^5.18.0",
     "typescript": "^3.5.2",
     "uglify-js": "^3.6.0"
   },
@@ -22,7 +35,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint --fix",
+      "tslint --fix",
       "git add"
     ]
   }
