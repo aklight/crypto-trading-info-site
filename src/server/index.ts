@@ -1,11 +1,10 @@
-import * as express from "express";
-import * as path from "path";
-const app = express();
+import App from './app';
+import UsersController from '../server/routes/api/users';
+// import connectDB from '../../config/db';
 
-app.use("/", express.static(path.resolve("./src/server/public")));
-app.use("/static", express.static(path.resolve("./dist/client")));
+// Connect to mongo DB
+// connectDB();
 
-app.listen(3000, function () {
-  console.log("Powered by FuseBox");
-  console.log('Example app listening on port 3000!')
-});
+const app = new App([new UsersController()], 5000);
+
+app.listen();
