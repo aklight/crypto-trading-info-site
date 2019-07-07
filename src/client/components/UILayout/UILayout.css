@@ -1,0 +1,125 @@
+:root {
+  --header-height: 64px;
+  --footer-height: 0;
+  --min-width: 1000px;
+  --min-height: 600px;
+  --aside-left-width: 200px;
+  --aside-right-width: 200px;
+  --aside-absolute-width: 300px;
+  --show-aside-absolute: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: 'header header header' 'left-side content right-side' 'footer footer footer';
+  height: 100vh;
+  grid-template-columns: auto 1fr var(--aside-right-width);
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 0;
+  min-width: var(--min-width);
+  min-height: var(--min-height);
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: var(--header-height);
+  overflow: hidden;
+}
+
+aside,
+main {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+aside > *,
+main > * {
+  flex-shrink: 0;
+}
+
+aside.left {
+  grid-area: left-side;
+  overflow-y: hidden;
+  display: grid;
+  grid-template-areas: 'menu' 'elog';
+  grid-template-rows: min-content 1fr;
+  background-color: #000000;
+  max-width: var(--aside-left-width);
+}
+
+main {
+  grid-area: content;
+  width: 100%;
+  overflow: auto;
+  padding: 5px 5px;
+}
+
+aside.right {
+  grid-area: right-side;
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  overflow: hidden;
+  height: var(--footer-height);
+}
+
+.size-notice {
+  display: none;
+}
+
+@media (max-width: 1000px), (max-height: 600px) {
+  .size-notice {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: 5px solid red;
+  }
+}
+
+.elog {
+  display: var(--full-screen);
+  overflow: hidden;
+}
+
+.absolute-wrapper {
+  display: var(--show-aside-absolute);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.absolute-wrapper:hover > aside.absolute {
+  left: calc(100% - var(--aside-absolute-width)) !important;
+}
+
+aside.absolute {
+  position: absolute;
+  left: 100%;
+  border: 1px solid black;
+  height: 100%;
+  width: var(--aside-absolute-width);
+  background-color: #ffffff;
+  transition: all 0.1s ease-out;
+}

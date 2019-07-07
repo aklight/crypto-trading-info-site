@@ -1,9 +1,10 @@
-const { FuseBox } = require('fuse-box');
+const { FuseBox, WebIndexPlugin, CSSPlugin } = require('fuse-box');
 const { TypeChecker } = require('fuse-box-typechecker');
 
 const fuse = FuseBox.init({
   homeDir: 'src',
-  output: 'dist/$name.js'
+  output: 'dist/$name.js',
+  plugins: [WebIndexPlugin(), [CSSPlugin()]]
 });
 
 fuse.dev({ port: 4445, httpServer: true });

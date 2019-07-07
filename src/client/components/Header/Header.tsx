@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import './Header.css';
 
@@ -10,7 +10,11 @@ class Header extends React.Component<HeaderProps & DefaultProps> {
   static defaultProps: DefaultProps = {};
 
   render() {
-    return <div className='main-header' />;
+    return (
+      <Fragment>
+        <div className='main-header'> Header</div>
+      </Fragment>
+    );
   }
 }
 
