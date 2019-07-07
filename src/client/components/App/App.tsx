@@ -7,7 +7,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import { CryproScreenerScreen } from 'screens';
+// import { CryproScreenerScreen } from 'screens';
 
 import UILayout from '../UILayout';
 
@@ -30,12 +30,14 @@ class App extends React.Component<AppProps & DefaultProps> {
     return (
       <Router>
         <UILayout>
+          <div>Test</div>
           <Switch>
             /* Routes for CryptoScreener screen */
             <Route exact path='/'>
-              <Redirect to='/screener' />
+              <div>APP</div>
+              {/* <Redirect to='/screener' /> */}
             </Route>
-            <Route exact path='/screener' component={CryproScreenerScreen} />
+            {/* <Route exact path='/screener' component={CryproScreenerScreen} /> */}
           </Switch>
         </UILayout>
       </Router>

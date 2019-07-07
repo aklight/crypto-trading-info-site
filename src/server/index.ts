@@ -5,6 +5,6 @@ import UsersController from '../server/routes/api/users';
 // Connect to mongo DB
 // connectDB();
 
-const app = new App([new UsersController()], 5000);
+const app = new App([new UsersController()], 4000);
 
 app.listen();

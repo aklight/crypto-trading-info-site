@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import App from './App';
-import { RootState } from 'store/types';
+import { RootState } from '../.././store/types';
 import { bindActionCreators } from 'redux';
-import store from 'store';
+import store from '../../store';
 
 const mapStateToProps = (state: RootState) => ({});
 

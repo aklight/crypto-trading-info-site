@@ -6,15 +6,7 @@ const fuse = FuseBox.init({
   output: 'dist/$name.js'
 });
 
-fuse.dev({ port: 4445, httpServer: false });
-
-fuse
-  .bundle('server/bundle')
-  .watch('server/**') // watch only server related code.. bugs up atm
-  .instructions(' > [server/index.ts]')
-  // Execute process right after bundling is completed
-  // launch and restart express
-  .completed((proc) => proc.start());
+fuse.dev({ port: 4445, httpServer: true });
 
 const Watch = TypeChecker({
   tsConfig: './src/tsconfig.json',
@@ -32,9 +24,17 @@ Watch.runPromise('./src')
   .catch((err) => console.log(err));
 
 fuse
+  .bundle('server/bundle')
+  .watch('server/**') // watch only server related code.. bugs up atm
+  .instructions(' > [server/index.ts]')
+  // Execute process right after bundling is completed
+  // launch and restart express
+  .completed((proc) => proc.start());
+
+fuse
   .bundle('client/app')
   .watch('client/**') // watch only client related code
   .hmr()
-  .instructions(' > client/index.ts');
+  .instructions(' > client/index.tsx');
 
 fuse.run();
