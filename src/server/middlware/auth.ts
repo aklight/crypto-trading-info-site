@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import * as jwt from 'jsonwebtoken';
-import * as config from 'config';
+import config from 'config';
 
 export default (req: Request, res: Response, next: NextFunction) => {
   const token: any = req.header('x-auth-token');
@@ -13,7 +13,7 @@ export default (req: Request, res: Response, next: NextFunction) => {
   try {
     const decoded: any = jwt.verify(token, config.get('jwtSecret'));
     
-    req.user = decoded.user;
+    (<any>req).user = decoded.user;
     next();
   } catch(err) {
     res.status(401).json({ msg: 'Token not valid' })

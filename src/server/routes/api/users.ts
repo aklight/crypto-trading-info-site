@@ -4,6 +4,7 @@ import { check, validationResult } from 'express-validator/check';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
 import * as config from 'config';
+import * as gravatar from 'gravatar';
 
 import User from '../../models/User.model';
 
@@ -26,7 +27,7 @@ class UsersController {
   // @route  POST api/users
   // @desc   Register user
   // @access Public
-  async registerUser = (req: express.Request, res: express.Response) => {
+  async registerUser(req: express.Request, res: express.Response) {
     const errors: any = validationResult(req);
     if(!errors.isEmpty()) {
       res.status(400).json({ errors: errors.array() });

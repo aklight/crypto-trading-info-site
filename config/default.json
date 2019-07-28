@@ -1,4 +1,4 @@
 {
   "jwtSecret": "newsecrettoken",
-  "mongoURI": "mongodb+srv://rustam1:rustam1@devconnector-25qke.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://dev1:dev1@cluster0-gsqla.mongodb.net/test?retryWrites=true&w=majority"
 }
