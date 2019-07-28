@@ -2,6 +2,8 @@ import express from 'express';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
 
+import connectDB from './db/db';
+
 class App {
   public app: express.Application;
   public port: number;
@@ -9,6 +11,9 @@ class App {
   constructor(controllers: any, port: number) {
     this.app = express();
     this.port = port;
+
+    // connect to DB
+    connectDB();
 
     this.initializeMiddlwares();
     this.initializeControllers(controllers);
@@ -23,7 +28,7 @@ class App {
 
   private initializeControllers(controllers: any) {
     controllers.forEach((controller: any) => {
-      this.app.use('/', controller.router);
+      this.app.use('/api', controller.router);
     });
   }
 
